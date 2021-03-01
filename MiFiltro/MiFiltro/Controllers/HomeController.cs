@@ -14,10 +14,16 @@ namespace MiFiltro.Controllers
         {
             return "Este es mi controlador Home";
         }
-        [Authorize (Roles ="Admin")]//Filtro por rol
-        [OutputCache(Duration =10)] //mantiene la cache por 10sg
+        //[Authorize (Roles ="Admin")]//Filtro por rol
+        //[OutputCache(Duration =10)] //mantiene la cache por 10sg
+        [ActionName("Hora")]//Ponerle nombre a una acción (funciona como seudonimo)
         public string HoraActual() {
-            return DateTime.Now.ToString("T");
+            return CadenaHora();
+        }
+
+        [NonAction]//no se puede acceder por url    
+        public string CadenaHora() {
+            return "Son las " + DateTime.Now.ToString("T");
         }
     }
 }

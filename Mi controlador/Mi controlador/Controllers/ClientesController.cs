@@ -14,5 +14,12 @@ namespace Mi_controlador.Controllers
             var input = Server.HtmlEncode(nombre);
             return Content(input);
         }
+
+        [HttpGet]
+        public ActionResult Buscar()
+        {
+            var input = "Este es un selector HTTP Get";
+            return Content(input);
+        }
     }
 }
