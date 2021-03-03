@@ -9,10 +9,24 @@ namespace MiModeloMVC.Controllers
 {
     public class ClientesController : Controller
     {
+        public static List<Clientes> empList = new List<Clientes> {
+            new Clientes{
+                ID = 1,
+                nombre = "Angel",
+                FechaAlta = DateTime.Parse(DateTime.Today.ToString()),
+                edad = 30
+            },
+            new Clientes{
+                ID = 2,
+                nombre = "Patricia",
+                FechaAlta = DateTime.Parse(DateTime.Today.ToString()),
+                edad = 35
+            }
+        };
         // GET: Clientes
         public ActionResult Index()
         {
-            var Clientes = from e in TodosLosClieentes()
+            var Clientes = from e in empList
                            orderby e.ID
                            select e;
             return View(Clientes);
@@ -49,7 +63,9 @@ namespace MiModeloMVC.Controllers
         // GET: Clientes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            List<Clientes> empList = TodosLosClieentes();
+            var Clientes = empList.Single(m => m.ID == id);
+            return View(Clientes);
         }
 
         // POST: Clientes/Edit/5
@@ -60,7 +76,10 @@ namespace MiModeloMVC.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                var Clientes = empList.Single(mbox => mbox.ID == id);
+                if (TryUpdateModel(Clientes))
+                    return RedirectToAction("Index");
+                return View(Clientes);
             }
             catch
             {
