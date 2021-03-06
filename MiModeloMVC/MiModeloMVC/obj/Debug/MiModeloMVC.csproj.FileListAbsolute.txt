@@ -76,3 +76,7 @@ C:\Users\lunam\source\repos\MiModeloMVC\MiModeloMVC\obj\Debug\MiModeloMVC.csproj
 C:\Users\lunam\source\repos\MiModeloMVC\MiModeloMVC\obj\Debug\MiModeloMVC.csproj.CopyComplete
 C:\Users\lunam\source\repos\MiModeloMVC\MiModeloMVC\obj\Debug\MiModeloMVC.dll
 C:\Users\lunam\source\repos\MiModeloMVC\MiModeloMVC\obj\Debug\MiModeloMVC.pdb
+C:\Users\lunam\source\repos\MiModeloMVC\MiModeloMVC\bin\EntityFramework.dll
+C:\Users\lunam\source\repos\MiModeloMVC\MiModeloMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\lunam\source\repos\MiModeloMVC\MiModeloMVC\bin\EntityFramework.xml
+C:\Users\lunam\source\repos\MiModeloMVC\MiModeloMVC\bin\EntityFramework.SqlServer.xml

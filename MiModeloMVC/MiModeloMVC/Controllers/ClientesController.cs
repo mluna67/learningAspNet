@@ -24,9 +24,10 @@ namespace MiModeloMVC.Controllers
             }
         };
         // GET: Clientes
+        private EmpDBContext db = new EmpDBContext();
         public ActionResult Index()
         {
-            var Clientes = from e in empList
+            var Clientes = from e in db.Clientes
                            orderby e.ID
                            select e;
             return View(Clientes);
@@ -51,7 +52,8 @@ namespace MiModeloMVC.Controllers
             try
             {
                 // TODO: Add insert logic here
-                empList.Add(emp);
+                db.Clientes.Add(emp);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -63,8 +65,7 @@ namespace MiModeloMVC.Controllers
         // GET: Clientes/Edit/5
         public ActionResult Edit(int id)
         {
-            List<Clientes> empList = TodosLosClieentes();
-            var Clientes = empList.Single(m => m.ID == id);
+            var Clientes = db.Clientes.Single(m => m.ID == id);
             return View(Clientes);
         }
 
@@ -76,9 +77,12 @@ namespace MiModeloMVC.Controllers
             {
                 // TODO: Add update logic here
 
-                var Clientes = empList.Single(mbox => mbox.ID == id);
+                var Clientes = db.Clientes.Single(mbox => mbox.ID == id);
                 if (TryUpdateModel(Clientes))
+                {
+                    db.SaveChanges();
                     return RedirectToAction("Index");
+                }
                 return View(Clientes);
             }
             catch
