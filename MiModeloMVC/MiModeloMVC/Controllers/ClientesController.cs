@@ -25,6 +25,7 @@ namespace MiModeloMVC.Controllers
         };
         // GET: Clientes
         private EmpDBContext db = new EmpDBContext();
+        [OutputCache(CacheProfile = "Cache5Minutos")]
         public ActionResult Index()
         {
             var Clientes = from e in db.Clientes
@@ -34,9 +35,11 @@ namespace MiModeloMVC.Controllers
         }
 
         // GET: Clientes/Details/5
+        [OutputCache (Duration = int.MaxValue, VaryByParam = "id")]
         public ActionResult Details(int id)
         {
-            return View();
+            var Clientes = db.Clientes.SingleOrDefault(e => e.ID == id);
+            return View(Clientes);
         }
 
         // GET: Clientes/Create
